@@ -1,0 +1,76 @@
+<component name="libraryTable">
+  <library name="java">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/01-no-jfx-setup/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/02-cli-jfx-jar/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/03-cli-jfx-native/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/04-cli-jfx-web/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/05-cli-jfx-generate-keystore/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/06-lifecycle-build-jfx-jar/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/07-lifecycle-build-jfx-native/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/08-build-with-proguard/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/09-withPackagerJar/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/10-skip-addingPackagerJar/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/11-access-application-and-jvm-parameters/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/12-lifecycle-build-keystore/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/13-lifecycle-build-web/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/14-native-launcher-linux-workaround124/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/15-native-launcher-linux-workaround124-skipped/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/16-multi-module-project/application-bundle/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/16-multi-module-project/plugins/plugin-one/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/16-multi-module-project/plugins/plugin-two/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/17-secondary-launchers/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/18-multi-module-project-with-filter/application-bundle/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/18-multi-module-project-with-filter/plugins/plugin-one/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/18-multi-module-project-with-filter/plugins/plugin-three/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/18-multi-module-project-with-filter/plugins/plugin-two/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/19-native-launcher-configuration-windows-workaround167/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/20-native-launcher-configuration-windows-workaround167-skipped/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/21-create-fileassociations/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/22-create-fileassociations-single-mimetypes/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/23-simple-custom-bundler/bundler/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/23-simple-custom-bundler/jfx-app/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/24-simple-custom-bundler-failed/jfx-app/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/25-native-launcher-linux-workaround205/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/26-native-launcher-linux-workaround205-skipped/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/27-launcherArguments/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/28-additionalBundlerResources/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/02-cli-jfx-jar_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/03-cli-jfx-native_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/04-cli-jfx-web_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/05-cli-jfx-generate-keystore_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/06-lifecycle-build-jfx-jar_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/07-lifecycle-build-jfx-native_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/08-build-with-proguard_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/09-withPackagerJar_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/10-skip-addingPackagerJar_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/11-access-application-and-jvm-parameters_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/12-lifecycle-build-keystore_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/13-lifecycle-build-web_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/14-native-launcher-linux-workaround124_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/15-native-launcher-linux-workaround124-skipped_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/16-multi-module-project_properties/application-bundle/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/16-multi-module-project_properties/plugins/plugin-one/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/16-multi-module-project_properties/plugins/plugin-two/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/17-secondary-launchers_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/18-multi-module-project-with-filter_properties/application-bundle/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/18-multi-module-project-with-filter_properties/plugins/plugin-one/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/18-multi-module-project-with-filter_properties/plugins/plugin-three/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/18-multi-module-project-with-filter_properties/plugins/plugin-two/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/19-native-launcher-configuration-windows-workaround167_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/20-native-launcher-configuration-windows-workaround167-skipped_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/21-create-fileassociations_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/22-create-fileassociations-single-mimetypes_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/23-simple-custom-bundler_properties/bundler/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/23-simple-custom-bundler_properties/jfx-app/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/24-simple-custom-bundler-failed_properties/jfx-app/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/25-native-launcher-linux-workaround205_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/26-native-launcher-linux-workaround205-skipped_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/27-launcherArguments_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/it/with_properties/28-additionalBundlerResources_properties/src/main/java" />
+      <root url="jar://$USER_HOME$/Baixades/javafx-maven-plugin-master.zip!/javafx-maven-plugin-master/src/main/java" />
+    </SOURCES>
+  </library>
+</component>
