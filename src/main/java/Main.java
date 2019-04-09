@@ -98,6 +98,7 @@ public class Main extends Application {
                     player.clear(gc);
                     player.moveLeft();
                     player.create(gc);
+//
                     break;
                 case D:
                     player.clear(gc);
