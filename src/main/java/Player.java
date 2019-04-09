@@ -5,17 +5,44 @@ import javafx.scene.image.Image;
 
 public class Player {
 
-    public static void player(Group root) {
+
+    Bullet bullet = new Bullet();
+    double w,h;
+    int x;
+    Canvas canvas;
+    Image pImage;
+
+    public Player() {
+        pImage= new Image("sprite_0.png");
+        x = 300;
+        w = pImage.getWidth();
+        h = pImage.getHeight();
+    }
+
+    public void create(GraphicsContext gc) {
         String pType = "player";
-        Canvas canvas = new Canvas(600, 800);
-        root.getChildren().add( canvas);
 
+        gc.drawImage(pImage, x, 750);
+    }
 
-        Image pImage = new Image("sprite_0.png");
+    public void moveLeft() {
+        x -= 5;
+    }
 
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+    public void moveRight() {
+        x += 5;
+    }
 
-        gc.drawImage(pImage, 300,  750);
+    public int getX() {
+        return x;
+    }
+    public void shoot(Group root) {
+        bullet.posicionNave(x);
+//        bullet.create(root, w);
 
+    }
+
+    public void clear(GraphicsContext gc) {
+        gc.clearRect(x, 750, w, h);
     }
 }

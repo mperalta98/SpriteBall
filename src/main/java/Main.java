@@ -7,9 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -22,25 +19,18 @@ public class Main extends Application {
 
     private double t = 0;
 
+    GraphicsContext gc;
+    private Image image;
+    private int posY;
+    private int posX;
 
-
-//    private Sprite player = new Sprite(300, 750, 40, 40, "player", Color.BLUE);
 
     private Parent createContent() {
         Canvas canvas = new Canvas( 600, 800 );
+
+        gc = canvas.getGraphicsContext2D();
+
         root.getChildren().add( canvas );
-
-
-//        root.getChildren().add(player);
-
-        AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-//                update();
-            }
-        };
-
-        timer.start();
 
         nextLevel();
 
@@ -49,123 +39,94 @@ public class Main extends Application {
 
     private void nextLevel() {
         for (int i = 0; i < 5; i++) {
-            Sprite s = new Sprite(90 + i*100, 150, 30, 30, "enemy", Color.RED);
+            //TODO: CAMBIAR CONSTRUCTOR SPRITE Y CREAR LOS SPRITES COMO EL DE AQUI.
+//            Image eImage = new Image("sprite_0_e.png");
+//            Sprite s = new Sprite(eImage,90 + i*100, 150, 30, 30, "enemy");
 
-            root.getChildren().add(s);
+
+//            root.getChildren().add(s);
         }
     }
 
-    private List<Sprite> sprites() {
-        return root.getChildren().stream().map(n -> (Sprite)n).collect(Collectors.toList());
-    }
+//    private List<Sprite> sprites() {
+//        return root.getChildren().stream().map(n -> (Sprite)n).collect(Collectors.toList());
+//    }
 
-   /* private void update() {
-        t += 0.016;
 
-        sprites().forEach(s -> {
-            switch (s.type) {
 
-                case "enemybullet":
-                    s.moveDown();
+//    private void shoot(Sprite who) {
+//        Sprite s = new Sprite((int) who.getTranslateX() + 20, (int) who.getTranslateY(), 5, 20, who.type + "bullet", Color.BLACK);
 
-                    if (s.getBoundsInParent().intersects(player.getBoundsInParent())) {
-                        player.dead = true;
-                        s.dead = true;
-                    }
-                    break;
+//        root.getChildren().add(s);
+//    }
 
-                case "playerbullet":
-                    s.moveUp();
 
-                    sprites().stream().filter(e -> e.type.equals("enemy")).forEach(enemy -> {
-                        if (s.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
-                            enemy.dead = true;
-                            s.dead = true;
-                        }
-                    });
-
-                    break;
-
-                case "enemy":
-
-                    if (t > 2) {
-                        if (Math.random() < 0.3) {
-                            shoot(s);
-                        }
-                    }
-
-                    break;
-            }
-        });
-
-        root.getChildren().removeIf(n -> {
-            Sprite s = (Sprite) n;
-            return s.dead;
-        });
-
-        if (t > 2) {
-            t = 0;
-        }
-    }
-    */
-
-    private void shoot(Sprite who) {
-        Sprite s = new Sprite((int) who.getTranslateX() + 20, (int) who.getTranslateY(), 5, 20, who.type + "bullet", Color.BLACK);
-
-        root.getChildren().add(s);
-    }
 
     @Override
     public void start(Stage stage) throws Exception {
 
-//        Canvas canvas = new Canvas(600, 800);
-//        player("sprite_0.png", x, y, w, h, "player");
+        Player player = new Player();
+        Bullet bullet = new Bullet();
 
 
+        //TODO: REVISAR POSICION BALA, VUELVE A ESTAR MAL. LA BALA NO HACE LA ANIMACION ENTERA, MIRAR EL CLEARRECT ?  04 ABRIL 2019
 
-        Player.player(root);
-
-//        AnimatedImage alien = new AnimatedImage();
-//        Image[] imageArray = new Image[6];
-//        for (int i = 0; i < 6; i++)
-//            imageArray[i] = new Image( "sprite_0_e" + i + ".png" );
-//        alien.frames = imageArray;
-//        alien.duration = 0.100;
+        final long startNanoTime = System.nanoTime();
 
 
-//        gc.drawImage( alien.getFrame(t), 450, 25 );
+        AnimationTimer ani = new AnimationTimer() {
+            public void handle(long currentNanoTime) {
+//                double t = (currentNanoTime - startNanoTime) / 1000000000.0;
 
+                bullet.clear(gc);
 
+//                double x = 232 + 128 * Math.cos(t);
+//                gc.clearRect(x, y, w, h);
+//                posY-=5;
+                bullet.shoot();
+//                gc.drawImage(image , posX, posY);
+                bullet.render(gc,player.getX());
+                System.out.println(player.getX());
+            }
+        };
 
         Scene scene = new Scene(createContent());
-/*
+
         scene.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case A:
+                    player.clear(gc);
                     player.moveLeft();
+                    player.create(gc);
                     break;
                 case D:
+                    player.clear(gc);
                     player.moveRight();
+                    player.create(gc);
                     break;
                 case SPACE:
-                    shoot(player);
+                    ani.start();
+
+                    if (bullet.y == 10) {
+                        ani.stop();
+                    }
                     break;
             }
         });
-        */
+
+        player.create(gc);
+        Enemy.enemy(root);
 
         stage.setScene(scene);
         stage.show();
     }
 
-
-
-    private static class Sprite extends Rectangle {
+    public static class Sprite extends Rectangle {
         boolean dead = false;
         final String type;
 
-        Sprite(int x, int y, int w, int h, String type, Color color) {
-            super(w, h, color);
+        Sprite(Image image, int x, int y, int w, int h, String type) {
+            super(w, h);
 
             this.type = type;
             setTranslateX(x);
@@ -187,6 +148,14 @@ public class Main extends Application {
         void moveDown() {
             setTranslateY(getTranslateY() + 5);
         }
+    }
+
+    void getbImage(Image bImage, int pos, int y){
+
+        image = bImage;
+        posX = pos;
+        posY = y;
+
     }
 
     public static void main(String[] args) {
