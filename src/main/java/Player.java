@@ -1,48 +1,38 @@
-import javafx.scene.Group;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Player {
+class Player {
 
-
-    Bullet bullet = new Bullet();
-    double w,h;
+    private double w,h;
     int x;
-    Canvas canvas;
-    Image pImage;
+    private Image pImage;
+    private GraphicsContext gc;
 
-    public Player() {
+    Player(GraphicsContext gc) {
+        this.gc = gc;
         pImage= new Image("sprite_0.png");
         x = 300;
         w = pImage.getWidth();
         h = pImage.getHeight();
     }
 
-    public void create(GraphicsContext gc) {
-        String pType = "player";
+    int getX() {
+        return x;
+    }
 
+    void render() {
         gc.drawImage(pImage, x, 750);
     }
 
-    public void moveLeft() {
+    void moveLeft() {
         x -= 5;
     }
 
-    public void moveRight() {
+    void moveRight() {
         x += 5;
     }
 
-    public int getX() {
-        return x;
-    }
-    public void shoot(Group root) {
-        bullet.posicionNave(x);
-//        bullet.create(root, w);
-
-    }
-
-    public void clear(GraphicsContext gc) {
+    void clear() {
         gc.clearRect(x, 750, w, h);
     }
 }

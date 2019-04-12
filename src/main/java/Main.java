@@ -1,165 +1,135 @@
-
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Main extends Application {
 
     private Group root = new Group();
-
-    private double t = 0;
-
-    GraphicsContext gc;
-    private Image image;
-    private int posY;
-    private int posX;
-
-
-    private Parent createContent() {
-        Canvas canvas = new Canvas( 600, 800 );
-
-        gc = canvas.getGraphicsContext2D();
-
-        root.getChildren().add( canvas );
-
-        nextLevel();
-
-        return root;
-    }
-
-    private void nextLevel() {
-        for (int i = 0; i < 5; i++) {
-            //TODO: CAMBIAR CONSTRUCTOR SPRITE Y CREAR LOS SPRITES COMO EL DE AQUI.
-//            Image eImage = new Image("sprite_0_e.png");
-//            Sprite s = new Sprite(eImage,90 + i*100, 150, 30, 30, "enemy");
-
-
-//            root.getChildren().add(s);
-        }
-    }
-
-//    private List<Sprite> sprites() {
-//        return root.getChildren().stream().map(n -> (Sprite)n).collect(Collectors.toList());
-//    }
-
-
-
-//    private void shoot(Sprite who) {
-//        Sprite s = new Sprite((int) who.getTranslateX() + 20, (int) who.getTranslateY(), 5, 20, who.type + "bullet", Color.BLACK);
-
-//        root.getChildren().add(s);
-//    }
-
-
+    private GraphicsContext gc;
+    private ArrayList<Bullet> bullets = new ArrayList<>();
+    private ArrayList<Enemy> enemies = new ArrayList<>();
+    private AnimationTimer ani;
+    private Player player;
+    private int puntuacion;
+    private boolean end = false;
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
 
-        Player player = new Player();
-        Bullet bullet = new Bullet();
+        Canvas canvas = new Canvas( 600, 800 );
+        gc = canvas.getGraphicsContext2D();
+        root.getChildren().add( canvas );
 
+        Scene scene = new Scene(root);
 
-        //TODO: REVISAR POSICION BALA, VUELVE A ESTAR MAL. LA BALA NO HACE LA ANIMACION ENTERA, MIRAR EL CLEARRECT ?  04 ABRIL 2019
+        player = new Player(gc);
+        for (int i = 0; i < 6 ; i++) {
+            for (int j = 0; j < 4; j++) {
 
-        final long startNanoTime = System.nanoTime();
+                int x = 20 + 75 * i;
+                int y = 50 + 50 * j;
 
+                enemies.add(new Enemy(gc, x, y));
+            }
+        }
+        //Bug conocido: Creado un alien fuera del mapa para poder finalizar el juego.
+        enemies.add(new Enemy(gc, 700, 0));
 
-        AnimationTimer ani = new AnimationTimer() {
+        ani = new AnimationTimer() {
             public void handle(long currentNanoTime) {
-//                double t = (currentNanoTime - startNanoTime) / 1000000000.0;
 
-                bullet.clear(gc);
+                if (end){stop();}
 
-//                double x = 232 + 128 * Math.cos(t);
-//                gc.clearRect(x, y, w, h);
-//                posY-=5;
-                bullet.shoot();
-//                gc.drawImage(image , posX, posY);
-                bullet.render(gc,player.getX());
-                System.out.println(player.getX());
+                gc.clearRect(0, 0, 600,800);
+
+                player.clear();
+                player.render();
+
+                for (Bullet bullet:bullets) {
+                    bullet.move();
+                    bullet.render();
+                }
+
+                for (Enemy enemy:enemies) {
+                    enemy.clear();
+                    enemy.move();
+                    enemy.render();
+
+                    for (Bullet bullet: bullets) {
+                        if (enemy.checkMorir(bullet, enemies, bullets)){
+                            puntuacion += 100;
+                        }
+                    }
+
+                    if (enemy.y >= 780 ) {
+                        gameOver(false);
+                    }
+                    if (puntuacion == 2400) {
+                        gameOver(true);
+                    }
+                }
+
+                for (Iterator<Bullet> itr = bullets.iterator(); itr.hasNext();){
+                    Bullet bullet = itr.next();
+                    if (bullet.y < 10){
+                        itr.remove();
+                    }
+                }
+                player.render();
+
+                String score = "Puntuación: "+ puntuacion;
+                gc.fillText(score, 470, 30);
+                gc.strokeText(score, 470, 30);
             }
         };
+        ani.start();
 
-        Scene scene = new Scene(createContent());
+            scene.setOnKeyPressed(e -> {
+                switch (e.getCode()) {
+                    case A:
+                    case LEFT:
+                        player.moveLeft();
 
-        scene.setOnKeyPressed(e -> {
-            switch (e.getCode()) {
-                case A:
-                    player.clear(gc);
-                    player.moveLeft();
-                    player.create(gc);
-//
-                    break;
-                case D:
-                    player.clear(gc);
-                    player.moveRight();
-                    player.create(gc);
-                    break;
-                case SPACE:
-                    ani.start();
+                        break;
+                    case D:
+                    case RIGHT:
+                        player.moveRight();
+                        break;
+                    case SPACE:
+                    case W:
+                    case UP:
+                        bullets.add(new Bullet(player.getX(), gc));
 
-                    if (bullet.y == 10) {
-                        ani.stop();
-                    }
-                    break;
-            }
-        });
-
-        player.create(gc);
-        Enemy.enemy(root);
+                        break;
+                }
+            });
 
         stage.setScene(scene);
         stage.show();
     }
 
-    public static class Sprite extends Rectangle {
-        boolean dead = false;
-        final String type;
+    private void gameOver(boolean win) {
 
-        Sprite(Image image, int x, int y, int w, int h, String type) {
-            super(w, h);
+        end = true;
 
-            this.type = type;
-            setTranslateX(x);
-            setTranslateY(y);
+        for (Enemy enemy: enemies) {
+            enemy.clear();
         }
+        player.clear();
 
-        void moveLeft() {
-            setTranslateX(getTranslateX() - 5);
-        }
-
-        void moveRight() {
-            setTranslateX(getTranslateX() + 5);
-        }
-
-        void moveUp() {
-            setTranslateY(getTranslateY() - 5);
-        }
-
-        void moveDown() {
-            setTranslateY(getTranslateY() + 5);
+        if(win) {
+            gc.drawImage(new Image("win.png"), 0, 0);
+        } else {
+            gc.drawImage(new Image("lose.png"), 0, 0);
         }
     }
 
-    void getbImage(Image bImage, int pos, int y){
-
-        image = bImage;
-        posX = pos;
-        posY = y;
-
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
+    public static void main(String[] args) { launch(args); }
 }

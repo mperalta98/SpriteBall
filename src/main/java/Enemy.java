@@ -1,37 +1,68 @@
-import javafx.scene.Group;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Enemy {
-    public static void enemy(Group root) {
-        String pType = "enemy";
-        Canvas canvas = new Canvas(600, 800);
-        root.getChildren().add( canvas);
+import java.awt.*;
+import java.util.ArrayList;
 
-        Image eImage = new Image("sprite_0_e.png", 50, 50, true, true);
+class Enemy {
 
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+    private double w,h, speed;
+    private Image eImage;
+    private GraphicsContext gc;
+    float x, y, xlimIni, xlimFin;
 
-        for (int i = 1; i <=6 ; i++) {
+    Enemy(GraphicsContext gc, int x, int y) {
+        this.x = x;
+        this.y = y;
+        int alienWidth = 50;
+        int alienWeight = 50;
+        this.gc = gc;
+        eImage = new Image("sprite_0_e.png", alienWidth, alienWeight, true, true);
+        w = eImage.getWidth();
+        h = eImage.getHeight();
+        speed =0.3;
+        xlimIni = x - 1;
+        xlimFin = x + 130;
+    }
 
-            gc.drawImage(eImage, 75*i,  100);
-            gc.drawImage(eImage, 75*i,  140);
-            gc.drawImage(eImage, 75*i,  180);
+    void render() {
+        gc.drawImage(eImage, x, y);
+    }
+
+    void clear() {
+        gc.clearRect(x, y, w, h);
+    }
+
+    void move() {
+        if (x <= xlimIni || x >= xlimFin){
+            y += 20;
+            speed *= -1;
         }
+        x += speed;
+    }
 
+    boolean checkMorir(Bullet bullet, ArrayList<Enemy> enemies, ArrayList<Bullet> bullets ) {
 
+        int bulletX = (int) bullet.getX();
+        int bulletY = (int) bullet.getY();
+        int bulletW = (int) bullet.getW();
+        int bulletH = (int) bullet.getH();
 
+        int alienW = (int) w;
+        int alienH = (int) h;
 
+        Rectangle alienRectangle = new Rectangle();
 
+        Rectangle pBullet = new Rectangle();
 
-//            for (int i = 0; i < 5; i++) {
-//
-//                TODO: CAMBIAR CONSTRUCTOR SPRITE Y CREAR LOS SPRITES COMO EL DE AQUI.
-//                Main.Sprite s2 = new Main.Sprite(eImage,90 + i*100, 300, 30, 30, "enemy");
-//
-//                root.getChildren().add(s2);
-//        }
+        alienRectangle.setBounds((int) x, (int) y, alienW, alienH);
+        pBullet.setBounds(bulletX, bulletY, bulletW, bulletH);
 
+        if(pBullet.intersects(alienRectangle)){
+            enemies.remove(this);
+            bullets.remove(bullet);
+            return true;
+        }
+        return false;
     }
 }
