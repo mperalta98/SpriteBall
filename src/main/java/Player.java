@@ -15,7 +15,7 @@ class Player {
         w = pImage.getWidth();
         h = pImage.getHeight();
     }
-
+//
     int getX() {
         return x;
     }
